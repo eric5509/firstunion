@@ -1,4 +1,5 @@
 import { Calendar, Edit, Mail, Pen, Pencil, PhoneCall } from "lucide-react";
+import Link from "next/link";
 import { BiCheck } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 
@@ -19,7 +20,7 @@ export default function Backdrop({ data, opened }: Props) {
                     <div className="w-full">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
-                                <p className="text-2xl font-semibold">{data.fullName}</p>
+                                <Link href={'/accounts/5'} className="text-2xl font-semibold">{data.fullName}</Link>
                                 <div className="h-[22px] w-[22px] rounded-full bg-green-500 grid place-content-center">
                                     <BiCheck className="text-lg stroke-1 text-white"/>
                                 </div>

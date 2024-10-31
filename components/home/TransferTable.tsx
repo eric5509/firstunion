@@ -100,7 +100,11 @@ export default function TransferTable() {
         <div>
             <table className="w-full rounded-md bg-black/20 text-white text-sm">
                 <thead className="">
-                    <tr className=" border-b-2">
+                    <motion.tr
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        className=" border-b-2">
                         <th className=" px-4 py-5 font-medium text-start flex items-center gap-3 text-base">
                             Sender
                         </th>
@@ -110,7 +114,7 @@ export default function TransferTable() {
                         <th className="px-4 py-5 font-medium text-start ">Beneficiary</th>
                         <th className="px-4 py-5 font-medium text-start ">Transfer Type</th>
                         <th className="px-4 py-5 font-medium text-start ">Status</th>
-                    </tr>
+                    </motion.tr>
                 </thead>
                 <tbody>
                     {transferData.map((row, key) => (

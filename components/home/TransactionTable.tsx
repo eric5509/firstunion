@@ -130,40 +130,27 @@ export default function TransactionTable({ one }: Props) {
         </thead>
         <tbody>
           <AnimatePresence>
-            {transactions.map((row, key) => (
-              <motion.tr
-                key={key}
-                className={`from-transparent to-black ${key !== transactions.length - 1 && 'border-b-2 border-gray-900'} bg-gradient-to-br origin-left hover:from-[#15154a] hover:to-black hover:via-[#0101b4] duration-500 cursor-pointer`}
-              >
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  exit={{ scaleX: 0 }}
-                  transition={{ duration: 0.5, delay: key * 0.05 }}
-                  className="flex w-full"
-                >
-                  {!one && (
-                    <td className="px-4 py-3 flex items-center gap-2">
-                      <span className="h-12 w-12 inline-block align-middle rounded-full border-2"></span>
-                      <span className="inline-block font-semibold">{row.fullName}</span>
-                    </td>
-                  )}
-                  <td className="px-4 py-3">{row.transactionId}</td>
-                  <td className="px-4 py-3">{row.date}</td>
-                  <td className="px-4 py-3">{row.description}</td>
-                  <td className="px-4 py-3">{row.category}</td>
-                  <td className="px-4 py-3">{row.type}</td>
-                  <td className="px-4 py-3">{row.amount}</td>
-                  <td
-                    className={`px-4 ${row.status === 'Completed' && 'text-green-500'} ${row.status === 'Failed' && 'text-red-500'} ${row.status === 'Pending' && 'text-amber-500'} py-3`}
-                  >
-                    {row.status}
-                  </td>
-                </motion.div>
-              </motion.tr>
-            ))}
+          {transactions.map((row, key) => (
+            <motion.tr
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              exit={{ scaleX: 0 }}
+              transition={{ duration: 0.5, delay: key * 0.05 }}
+              className={`from-transparent to-black ${key !== transactions.length - 1 && 'border-b-2 border-gray-900'} bg-gradient-to-br origin-left hover:from-[#15154a] hover:to-black hover:via-[#0101b4] duration-500 cursor-pointer`} key={key}>
+              {!one && <td className="px-4 py-3 flex items-center gap-2">
+                <span className="h-12 w-12 inline-block align-middle rounded-full border-2"></span>
+                <span className="inline-block font-semibold">{row.fullName}</span>
+              </td>}
+              <td className="px-4 py-3">{row.transactionId}</td>
+              <td className="px-4 py-3">{row.date}</td>
+              <td className="px-4 py-3">{row.description}</td>
+              <td className="px-4 py-3">{row.category}</td>
+              <td className="px-4 py-3">{row.type}</td>
+              <td className="px-4 py-3">{row.amount}</td>
+              <td className={`px-4 ${row.status === 'Completed' && "text-green-500"} ${row.status === 'Failed' && "text-red-500"} ${row.status === 'Pending' && "text-amber-500"} py-3`}>{row.status}</td>
+            </motion.tr>
+          ))}
           </AnimatePresence>
-
         </tbody>
       </table>
     </div>
